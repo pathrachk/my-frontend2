@@ -1,0 +1,118 @@
+/**
+ * ==============================================================================
+ * ไฟล์: src/components/SettingsModal.css
+ * หน้าที่: สไตล์สำหรับหน้าต่างป๊อปอัปตั้งค่าระบบหอพัก (Settings Modal Stylesheet)
+ * ==============================================================================
+ * รายละเอียด:
+ * - ม่านพื้นหลังเบลอ (.settings-modal-backdrop)
+ * - สไตล์การแบ่งหมวดการตั้งค่า (.settings-section-title)
+ * - สไตล์กล่องเปลี่ยนรหัสผ่านแอดมิน (.settings-pin-box)
+ */
+
+.settings-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.settings-modal-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  animation: settingsFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes settingsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.settings-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.settings-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-header-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: #fff1f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff3377;
+}
+
+.settings-header-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.settings-header-desc {
+  font-size: 12px;
+  color: #64748b;
+  margin: 2px 0 0 0;
+}
+
+.settings-form-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-section-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ff3377;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 0;
+}
+
+.settings-pin-box {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 18px;
+}
+
+.settings-pin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+}

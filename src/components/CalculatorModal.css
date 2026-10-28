@@ -1,0 +1,336 @@
+/**
+ * ==============================================================================
+ * ไฟล์: src/components/CalculatorModal.css
+ * หน้าที่: สไตล์สำหรับหน้าต่างป๊อปอัปคำนวณมิเตอร์และออกบิล (Calculator Modal Stylesheet)
+ * ==============================================================================
+ * รายละเอียด:
+ * - ม่านพื้นหลังเบลอ (.calc-modal-backdrop)
+ * - เลย์เอาต์กล่องบันทึกมิเตอร์น้ำ (.calc-water-box) และมิเตอร์ไฟ (.calc-elec-box)
+ * - แถบสรุปยอดเงินสุทธิ (.calc-summary-banner) และกรอบแสดงภาพตัวอย่าง QR Code
+ */
+
+.calc-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.calc-modal-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 650px;
+  max-height: 92vh;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  animation: calcFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes calcFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.calc-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.calc-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calc-header-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: #fff1f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff3377;
+}
+
+.calc-header-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.calc-header-desc {
+  font-size: 12px;
+  color: #64748b;
+  margin: 2px 0 0 0;
+}
+
+.calc-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Alert Boxes */
+.calc-alert {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.calc-alert-error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+.calc-alert-success {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #059669;
+}
+
+/* Row & Grid layouts */
+.calc-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.calc-row-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.calc-row-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.calc-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calc-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.calc-input, .calc-select {
+  padding: 9px 13px;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.calc-input:focus, .calc-select:focus {
+  border-color: #ff3377;
+  box-shadow: 0 0 0 3px rgba(255, 51, 119, 0.15);
+  background-color: #ffffff;
+}
+
+/* Utility Meter Section Boxes */
+.calc-meter-box {
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid;
+}
+
+.calc-water-box {
+  background-color: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+.calc-elec-box {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+}
+
+.calc-meter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calc-meter-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.calc-water-title {
+  color: #0369a1;
+}
+
+.calc-elec-title {
+  color: #b45309;
+}
+
+.calc-unit-display {
+  padding: 8px 10px;
+  background-color: #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+  text-align: center;
+}
+
+.calc-total-display {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.calc-water-total {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.calc-elec-total {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+/* Grand Total Banner */
+.calc-summary-banner {
+  padding: 18px 20px;
+  background: linear-gradient(135deg, #fff1f5 0%, #ffe4ec 100%);
+  border: 1px solid #ffd1df;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calc-grand-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #9d174d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.calc-grand-amount {
+  font-size: 28px;
+  font-weight: 900;
+  color: #ff3377;
+  margin: 2px 0 0 0;
+}
+
+.calc-grand-sub {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.calc-qr-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.calc-qr-preview img {
+  width: 76px;
+  height: 76px;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid #fbcfe8;
+}
+
+.calc-qr-preview span {
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Footer & Buttons */
+.calc-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.btn-secondary {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #f1f5f9;
+}
+
+.btn-primary {
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #ff3377 0%, #ff529a 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 51, 119, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 51, 119, 0.35);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

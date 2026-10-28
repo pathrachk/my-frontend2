@@ -1,0 +1,160 @@
+/**
+ * ==============================================================================
+ * ไฟล์: src/components/SlipVerifyModal.css
+ * หน้าที่: สไตล์สำหรับหน้าต่างป๊อปอัปตรวจสอบสลิปโอนเงิน (Slip Verify Modal Stylesheet)
+ * ==============================================================================
+ * รายละเอียด:
+ * - ม่านพื้นหลังเบลอ (.slip-modal-backdrop)
+ * - กรอบแสดงรูปสลิป (.slip-img-container)
+ * - ปุ่มอนุมัติ (.btn-approve) และปุ่มปฏิเสธสลิป (.btn-reject)
+ */
+
+.slip-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.slip-modal-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  animation: slipFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.slip-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.slip-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slip-header-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: #fff1f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff3377;
+}
+
+.slip-modal-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.slip-summary-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+
+.slip-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f172a;
+  border-radius: 14px;
+  padding: 12px;
+  max-height: 380px;
+  overflow: hidden;
+}
+
+.slip-img-preview {
+  max-height: 350px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.slip-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding-top: 6px;
+}
+
+.btn-reject {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-reject:hover:not(:disabled) {
+  background-color: #fee2e2;
+}
+
+.btn-approve {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-approve:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<!--
+  ==============================================================================
+  ไฟล์: index.html
+  หน้าที่: ไฟล์ HTML หลักที่เป็น Entry Point เริ่มต้นของเว็บแอปพลิเคชันฝั่งเบราว์เซอร์
+  ==============================================================================
+  รายละเอียด:
+  - โหลดฟอนต์ภาษาไทย (Prompt และ Kanit) จาก Google Fonts
+  - โหลด Tailwind CSS CDN และกำหนด Config (ธีมสี brand, navy และฟอนต์ประจำแอป)
+  - กำหนด Container element (<div id="root"></div>) สำหรับให้ React Mount คอมโพเนนต์
+  - โหลดสคริปต์โมดูลหลัก /src/main.jsx เพื่อเริ่มต้นรันโค้ด React
+-->
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ระบบจัดการหอพัก | Lector Living</title>
+
+    <!-- 1. โหลดฟอนต์ภาษาไทยจาก Google Fonts: Prompt และ Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 2. นำเข้า Tailwind CSS ผ่าน CDN สำหรับตกแต่งสไตล์ -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. กำหนดค่า Tailwind Theme (ขยายสีและฟอนต์ที่ใช้ในแอปพลิเคชัน) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Prompt', 'sans-serif'],
+              kanit: ['Kanit', 'sans-serif']
+            },
+            colors: {
+              brand: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                500: '#f43f5e',
+                600: '#e11d48',
+                700: '#be123c',
+                pink: '#ff3377',
+                pinkDark: '#e60067'
+              },
+              navy: {
+                800: '#1e293b',
+                900: '#0f172a'
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- จุดที่ React จะนำหน้าจอ UI ทั้งหมดมาเรนเดอร์ลงใน DOM นี้ -->
+    <div id="root"></div>
+
+    <!-- โหลดสคริปต์หลักของ React เพื่อเริ่มการทำงาน -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
